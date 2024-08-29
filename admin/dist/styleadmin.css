@@ -1,0 +1,19 @@
+.card-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 60px;
+    color: #fff;
+}
+.card-header1 {
+    background-color: white;
+    border-bottom: 1px solid #D1D2D4;
+    padding: 10px 10px;
+}
+.card-title .btn{
+    text-align: center;
+    padding-top: 10px;
+}
+form .row .card-body{
+    display: none;
+}
+   

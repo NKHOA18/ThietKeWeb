@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý NKstore</title>
+  
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <style>
+      .is-hidden {
+        display: none;
+      }
+      #productDescription {
+      width: 100%; /* Đảm bảo textarea chiếm hết chiều rộng của phần tử chứa */
+      resize: vertical; /* Cho phép người dùng thay đổi kích thước theo chiều dọc */
+      }
+        .image-container {
+            position: relative;
+            margin: 10px;
+            width: 120px;
+            cursor: pointer;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay .fa-trash {
+            color: white;
+            font-size: 24px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="dist/styleadmin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+   <body class="hold-transition sidebar-mini layout-fixed">
+  
+   <div class="wrapper">
+
+   <!-- Preloader -->
+   <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+   </div>
+
+   <!-- Navbar -->
+   <nav class="main-header navbar navbar-expand navbar-yellow navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <div class="header-top-left">
+        <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;14 Phạm Quý Thích, P.Tân Quý, Q.Tân Phú, TPHCM</span>
+        <br>
+        <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;(+84) 28. 38 12 17 19</span>
+    </div>
+    <div class="header-top-right header-top-right-v3">
+        <div class="icon-v3-top">
+            <a href="#" title="Facebook"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            <a href="#" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a href="#" title="Isnstagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" title="Pinterest"><i class="fa fa-pinterest-p"></i></a>
+            <a href="#" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+        </div>
+        
+        </div>
+        <!-- <a href="./" title="Skyline" class="logo-v3"><img src="dist/img/k-logo-100-removebg-preview.png" class="img-responsive" alt="Image" height="90" width="90"></a> -->
+        
+       </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+   </nav>
+   <!-- /.navbar -->
+
+   <!-- Main Sidebar Container -->
+   <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/nkstore/index.php" class="brand-link">
+      <img src="dist/img/TLU.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Quản lý NKstore</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Trần Nam Khoa</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">   
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Danh mục
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview d-block" >
+              <li class="nav-item menu-taikhoan">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Tài khoản</p>
+                </a>
+              </li>
+              
+              <li class="nav-item menu-sanpham">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Sản Phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item menu-donhang">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Đơn hàng</p>
+                </a>
+              </li>
+              <li class="nav-item menu-theloai">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Thể loại</p>
+                </a>
+              </li>
+              <li class="nav-item menu-mausac">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Màu sắc</p>
+                </a>
+              </li>
+              <li class="nav-item menu-kichco">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Kích cở</p>
+                </a>
+              </li>
+              <li class="nav-item menu-bstanh">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Bộ sưu tập ảnh</p>
+                </a>
+              </li>
+              <li class="nav-item menu-thuoctinh">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Thuộc tính</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Nghiệp vụ
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview"> 
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Thống kê
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview"> 
+              <li class="nav-item menu-hoadonP">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Sản Phẩm</p>
+                </a>
+              </li>
+              <li class="nav-item menu-hdban">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-arrow-circle-right"></i>
+                  <p>Tài khoản</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+   </aside>
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>150</h3>
+
+                <p>New Orders</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Bounce Rate</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>44</h3>
+
+                <p>User Registrations</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right breadcrumbcurrent">
+              <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+              <li class="breadcrumb-item active">Accounts</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+     <!-- form khachhang -->
+     <div class="row boxkhachhang is-hidden" id="khachhang">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header1">
+            <h3 class="card-title" style="color: black;">&nbsp;Accounts List
+            </h3>
+            <button type="button" class="btn btn-info bg-gradient-primary float-right add_account">&nbsp;Add Account</button>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
+            <div class="card-body d-none">
+              <div class="row ">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">HỌ(*)</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtusername" id="inputEmail3" placeholder="">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-4 col-form-label">Tên(*)</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtpassword" id="inputPassword3" placeholder="">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Role</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbrole_id">
+                        <option>1</option>
+                        <option>2</option>
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label ">Fullname (*)</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control txtfullname" value="" id="inputEmail3" placeholder="fullname">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label ">Email (*)</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control txtemail" value="" id="inputEmail3" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control txtphone" id="inputPassword3" placeholder="SoDienThoai">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control txtaddress" id="inputPassword3" placeholder="Address">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-4">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">CreateDate</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control txtcreatedate" id="inputEmail3" placeholder="">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Image</label>
+                    <div class="col-sm-8">
+                      <input type="file" class="form-control txtimage" id="inputEmail3" placeholder="">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn btn-info bg-gradient-danger them_khachhang"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+                  <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_khachhang"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+                  <button type="button" class="btn btn-info bg-gradient-danger sua_khachhang"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+                  <button type="button" class="btn btn-info bg-gradient-danger xoa_khachhang"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+                  <button type="button" class="btn btn-info bg-gradient-danger luu_khachhang"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            
+            <div class="card-footer">
+              <div class="card">
+ 
+                  <div class="card-header">
+                    <div class="input-group input-group-sm col-lg-4 float-right">
+                      <input type="text" class="form-control txttimkhachhang">
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-info btn-flat btntimkhachhang">Search</button>
+                      </span>
+                    </div>
+                </div>
+                
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Mã số</th>
+                        <th>Họ tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Ngày tạo</th>
+                        <th>Giới tính</th>
+                        <th>Năm sinh</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBodyuser" class="addListuser">
+                      
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix pageuser">
+
+                </div>
+              </div>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- kết thúc form sản phẩm -->
+    <!-- form nhân viên -->
+    <div class="boxsanpham row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header1">
+            <h3 class="card-title" style="color: black;"><i class="fa fa-motorcycle" aria-hidden="true"></i>&nbsp;Thông tin Sản phẩm
+            </h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal" method="POST">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Mã sản phẩm</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtmasp" id="inputEmail3" placeholder="Mã sản phẩm được thêm tự động" disabled>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-4 col-form-label">Tên sản phẩm</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txttensp" id="inputPassword3" placeholder="Tên sản phẩm">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Image</label>
+                  <div class="col-sm-8">
+                    <input type="file" class="form-control txtimagesp" id="inputEmail3" placeholder="">
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="inputEmail3" class="col-sm-6 col-form-label">Giá sản phẩm</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtgiasp" id="inputEmail3" placeholder="">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label for="inputPassword3" class="col-sm-4 col-form-label">Thể loại</label>
+                  <div class="col-sm-8">
+                    <select class="form-control cbtheloai">
+                      <option value="0" selected>Chọn thể loại sản phẩm</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label for="inputPassword3" class="col-sm-4 col-form-label">Số Lượng</label>
+                  <div class="col-sm-8">
+                    <select class="form-control cbsoluong">
+                      <option selected>Chọn số lượng</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <label for="inputEmail3" class="col-sm-6 col-form-label">Mức giảm giá</label>
+                  <div class="col-sm-8">
+                    <select class="form-control cbmucgiam">
+                      <option value="20%">20%</option>
+                      <option value="25%">25%</option>
+                      <option value="30%">30%</option>
+                      <option value="35%">35%</option>
+                      <option value="40%">40%</option>
+                      <option value="45%">45%</option>
+                      <option value="50%">50%</option>
+                      <option value="55%">55%</option>
+                      <option value="60%">60%</option>
+                      <option value="65%">65%</option>
+                      <option value="70%">70%</option>
+                      <option value="75%">75%</option>
+                      <option value="299">299K</option>
+                    </select>
+                
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Trạng thái</label>
+                    <select class="form-control cbtrangthai" disabled>
+                      <option value="1">Còn hàng</option>
+                      <option value="10">Hết hàng</option>
+                      <option value="0" selected>NEW</option>
+                    </select>
+                </div>
+                <div class="col-sm-8">
+                  <label for="productDescription" class="col-sm-6 col-form-label">Mô tả sản phẩm</label>
+                  <div class="col-sm-10">
+                      <textarea class="form-control txtmotasp" id="productDescription" rows="5" placeholder="Nhập mô tả sản phẩm"></textarea>
+                  </div>
+                </div>
+              
+                
+              </div>
+              
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_sanpham"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger capnhat_sanpham"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Cập nhật</button>
+            </div>
+            <div class="card-footer">
+              <div class="card">
+                <div class="card-header bg-success">
+                  <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách
+                    các Sản phẩm</h3>
+                </div>
+                <div class="card-body">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Mã sp</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Image</th>
+                        <th>Giá(Đồng)</th>
+                        <th>Chiết khấu</th>
+                        <th>Mô tả</th>
+                        <th>Sl</th>
+                        <th>Thể loại</th>
+                        <th>Status</th>
+                        <th>Operation</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBodysp" class="addListsanpham">
+
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix pagenhanvien">
+
+                </div>
+              </div>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- kết thúc form đơn hàng -->
+    <div class="boxdonhang row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+            <div class="card-header">
+            <h3 class="card-title">&nbsp;LIST OF ORDER
+            </h3>
+          </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form class="form-horizontal">
+        <div class="card-body d-none">
+          <div class="row d-none">
+            <div class="col-sm-4">
+              <label for="inputEmail3" class="col-sm-4 col-form-label">HỌ(*)</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control txtusername" id="inputEmail3" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <label for="inputPassword3" class="col-sm-4 col-form-label">Tên(*)</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control txtpassword" id="inputPassword3" placeholder="">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <label for="inputPassword3" class="col-sm-6 col-form-label">Role</label>
+              <div class="col-sm-6">
+                <div class="form-group">
+
+                  <select class="form-control cbrole_id">
+                    <option>1</option>
+                    <option>2</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_khachhang"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_khachhang"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+              <button type="button" class="btn btn-info bg-gradient-danger sua_khachhang"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger xoa_khachhang"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger luu_khachhang"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        
+        <div class="card-footer">
+          <div class="card">
+
+              <div class="card-header">
+                <div class="input-group input-group-sm col-lg-4 float-right">
+                  <input type="text" class="form-control txttimkhachhang">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btntimkhachhang">Search</button>
+                  </span>
+                </div>
+            </div>
+            
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>Tên người dùng</th>
+                    <th>Phone</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày tạo</th>
+                    <th>Status</th>
+                    <th>OrderStatus</th>
+                    <th>Orderdetail</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodyorder" class="addListuser">
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pageuser">
+
+            </div>
+          </div>
+        </div>
+        <!-- /.card-footer -->
+      </form>
+          <div class="card d-none">
+            <div class="card-header">
+              <div class="input-group input-group-sm col-lg-4 float-right">
+                <input type="text" class="form-control txttimkhachhang">
+                <span class="input-group-append">
+                  <button type="button" class="btn btn-info btn-flat btntimkhachhang">Search</button>
+                </span>
+              </div>
+            </div>
+        <!-- /.card-header -->
+
+            <div class="card-body d-none">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>Tên người dùng23</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày tạo</th>
+                    <th>Payment</th>
+                    <th>Satust</th>
+                    <th>Oderdetail</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodyorder12" class="addListphong">
+                  
+                </tbody>
+              </table>
+            </div>
+        <!-- /.card-body -->
+            <div class="card-footer clearfix pagephong">
+
+            </div>
+          </div>
+
+  
+        </div>
+     </div>
+    </div>
+     <!--Form thể loại-->
+     <div class="boxtheloai row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin các danh mục</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal" method="POST">
+            <div class="card-body">
+              <div class="row col-sm-12">
+                <div class="col-sm-6">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã số</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control txtmatl" id="inputEmail3" placeholder="Mã số">
+                </div>
+              </div>              
+              <div class="col-sm-6">
+                <label for="inputPassword3" class="col-sm-4 col-form-label">Tên thể loại</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control txttentheloai" id="inputPassword3" placeholder="Tên thể loại">
+                </div>
+              </div>             
+            </div>
+
+              <div class="row col-sm-12">
+                <div class="col-sm-6">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Thuộc Nhóm</label>
+                  <div class="col-sm-6">
+                    <select class="form-control cbnhom">
+                      <option value="1">Nữ</option>
+                      <option value="2">Nam</option>
+                      <option value="3">Bé trai</option>
+                      <option value="4">Bé gái</option>
+                  </select>
+                  
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_theloai"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger capnhat_theloai"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Cập nhật</button>
+            </div>
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách các thể loại</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- <div class="card-header">
+                <div class="input-group input-group-sm col-lg-4">
+                  <input type="text" class="form-control txttimnuoc">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btntimtheloai">Tìm</button>
+                  </span>
+                </div>
+            </div> -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Mã Thể Loại</th>
+                    <th>Tên Thể Loại</th>
+                    <th>Thuộc Nhóm</th>
+          
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody" class="addListtheloai">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagetheloai">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div><!--End-Form thể loại-->
+     <!--Form Màu sắc-->
+     <div class="boxmausac row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin Màu sắc</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal" method="POST">
+            <div class="card-body">
+              <div class="row col-sm-12">
+                <div class="col-sm-6">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Mã số</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control txtmams" id="inputEmail3" placeholder="Mã số">
+                  </div>
+                </div>              
+                <div class="col-sm-6">
+                    <label for="inputPassword3" class="col-sm-4 col-form-label">Tên màu sắc</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control txttenmausac" id="inputPassword3" placeholder="Tên màu sắc">
+                    </div>
+                </div>             
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_mausac"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger capnhat_mausac"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Cập nhật</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách các màu sắc</h3>
+            </div>
+            <!-- /.card-header -->
+            
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Mã màu sắc</th>
+                    <th>Tên màu sắc</th>
+                    <th>Hình ảnh</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodycolor" class="addListBM">
+
+                  
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagebm">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--Form size-->
+     <div class="boxkichco row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin các Kích cở</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
+            <div class="card-body">
+              <div class="row col-sm-12">
+                <div class="col-sm-6">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">Mã số</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control txtmams" id="inputEmail3" placeholder="Mã số">
+                  </div>
+                </div>              
+                <div class="col-sm-6">
+                    <label for="inputPassword3" class="col-sm-4 col-form-label">Tên màu sắc</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control txttenmausac" id="inputPassword3" placeholder="Tên màu sắc">
+                    </div>
+                </div>             
+              </div>         
+            </div>
+
+            
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_kichco"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger capnhat_kichco"><i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;Cập nhật</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách các kích cở</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Mã số</th>
+                    <th>Tên kích cở</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodysize" class="addListmonan">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagemonan">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End-Form size-->
+     <!--Form anh sản phẩm-->
+     <div class="boxbstanh row is-hidden">
+     <div class="col-lg-12">
+     <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">Thông tin Bộ sưu tập ảnh</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form class="form-horizontal">
+        <div class="card-body">
+          <div class="row col-sm-12">
+            <div class="col-sm-6">
+              <label for="inputPassword3" class="col-sm-4 col-form-label">Mã sản phẩm</label>
+              <div class="col-sm-6">
+                <select class="form-control cbtensanpham">
+                  <option selected>Chọn sản phẩm </option>
+                </select>
+              </div>
+            </div>             
+            <div class="col-sm-6">
+              <label for="inputEmail3" class="col-sm-4 col-form-label">Image</label>
+              <div class="col-sm-8">
+                <input type="file" class="form-control txtbstanh" id="inputEmail3" placeholder="">
+              </div>
+            </div>           
+        </div>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="button" class="btn btn-info bg-gradient-danger them_bstanh"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+        </div>
+        <!-- /.card-footer -->
+      </form>
+      <div class="card">
+        <div class="card-header bg-success">
+          <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách bộ sưu tập ảnh</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-header">
+            <div class="input-group input-group-sm col-lg-4">
+              <input type="text" class="form-control txttimloaiphong">
+              <span class="input-group-append">
+                <button type="button" class="btn btn-info btn-flat btntimloaiphong">Tìm</button>
+              </span>
+            </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th style="width:20px; text-align: center;">ID</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+              </tr>
+            </thead>
+            <tbody id="tableBodybstanh" class="addListloaiphong">
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center" id="pagination">
+              <!-- Các nút phân trang sẽ được thêm vào đây -->
+          </ul>
+        </nav>
+      </div>
+     </div>
+     </div>
+     </div>
+     <!-- End-Form loai phòng-->
+
+     <!--Form Thuộc tính-->
+     <div class="boxthuoctinh row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin thuộc tính của sản phẩm</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
+            <div class="card-body">
+              <div class="row col-sm-12 form-group">
+
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Mã sản phẩm</label>
+                  <div class="col-sm-8">
+                    <select class="form-control cbthuoctinhsp">
+                      <option selected>Chọn sản phẩm </option>
+                    </select>
+                  </div>
+                </div>             
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Mã màu sắc</label>
+                  <div class="col-sm-8">
+                    <select class="form-control cbthuoctinhms">
+                      <option selected>Chọn Color</option>
+                    </select>
+                  </div>
+                </div>  
+                
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Mã kích cở</label>
+                  <div class="col-sm-6">
+                    <select class="form-control cbthuoctinhkc">
+                      <option selected>Chọn Size</option>
+                    </select>
+                  </div>
+                </div>  
+            </div>
+            <div class="row col-sm-12 form-group">
+
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-10 col-form-label">Dòng sản phẩm</label>
+                <div class="col-sm-10">
+                    <select class="form-control cbtt1">
+                      <option value="Công sở"selected>Công sở</option>
+                      <option value="Dạo phố">Dạo phố</option>
+                      <option value="Thê thao">Thê thao</option>
+                      <option value="Dạ tiệc">Dạ tiệc</option>
+                      <option value="Xuân hè">Xuân hè</option>
+                      <option value="Thu đông">Thu đông</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-10 col-form-label">Nhóm sản phẩm</label>
+                <div class="col-sm-10">
+                  <select class="form-control cbtt2">
+                    <option value="Áo" selected>Áo</option>
+                    <option value="Quần">Quần</option>
+                    <option value="Set Bộ">Set bộ</option>
+                    <option value="Váy">Váy</option>
+                    <option value="Đầm">Đầm</option>
+                    <option value="Senora">Senora</option>
+                    <option value="Phụ kiện">Phụ kiện</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-8 col-form-label">Chất liệu</label>
+                <div class="col-sm-10">
+                  <select class="form-control cbtt3">
+                    <option value="Bông" selected>Bông</option>
+                    <option value="Lụa">Lụa</option>
+                    <option value="Len">Len</option>
+                    <option value="Vải lanh">Vải lanh</option>
+                    <option value="Da">Da</option>
+                    <option value="Nhung">Nhung</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-8 col-form-label">Kiểu dáng</label>
+                <div class="col-sm-10">
+                  <select class="form-control cbtt4">
+                    <option value="A-line" selected>A-line</option>
+                    <option value="Sheath">Sheath</option>
+                    <option value="Shift">Shift</option>
+                    <option value="Fit and Flare">Fit and Flare</option>
+                    <option value="Empire">Empire</option>
+                    <option value="Peplum">Peplum</option>
+                    <option value="Off-Shoulder">Off-Shoulder</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-8 col-form-label">Độ dài</label>
+                <div class="col-sm-10">
+                  <select class="form-control cbtt5">
+                    <option value="Mini Length" selected>Mini Length</option>
+                    <option value="Knee Length">Knee Length</option>
+                    <option value="Midi Length">Midi Length</option>
+                    <option value="Tea Length">Tea Length</option>
+                    <option value="Maxi Length">Maxi Length</option>
+                    <option value="Full Length">Full Length</option>
+                  </select>
+              </div>
+              </div>
+              <div class="col-sm-2">
+                <label for="inputEmail3" class="col-sm-8 col-form-label">Họa tiết</label>
+                <div class="col-sm-10">
+                  <select class="form-control cbtt6">
+                    <option value="Hoa" selected>Hoa</option>
+                    <option value="Kẻ sọc">Kẻ sọc</option>
+                    <option value="Chấm bi">Chấm bi</option>
+                    <option value="Trơn">Trơn</option>
+                    <option value="Đối xứng">Đối xứng</option>
+                    <option value="Chữ viết">Chữ viết</option>
+                  </select>
+              </div>
+              </div>
+          </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_thuoctinh"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách các thuộc tính của sản phẩm</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px; text-align: center;">ID</th>
+                    <th>Tên sản phẩm</th>
+                    <th>màu sắc</th>
+                    <th>kích cở</th>
+                    <th>Mô tả chi tiết</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodytt" class="addListthuoctinh">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagechucvu">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End-Form Chức Vụ-->
+
+    <!--Form thống kee san phẩm-->
+    <div class="boxdatban row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header d-none">
+            <h3 class="card-title">Thông tin Đặt Bàn</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal d-none">
+            <div class="card-body ">
+              <div class="row ">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Mã KH</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtmakhDB" id="inputEmail3" placeholder="Mã KH">
+                  </div>
+                </div>              
+                
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">SL bàn</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbslbanDB">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Ngày Đặt</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control txtngaydat" id="inputEmail3" placeholder="">
+                  </div>
+                </div>
+                </div>
+             
+              
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_datban"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_datban"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+              <button type="button" class="btn btn-info bg-gradient-danger sua_datban"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger xoa_datban"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger luu_datban"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách thống kê sản phẩm</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-header">
+                <div class="input-group input-group-sm col-lg-4">
+                  <input type="text" class="form-control txttimdatban">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btntimdatban">Tìm</button>
+                  </span>
+                </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Tên thể loại</th>
+                    <th>Ngày đặt</th>
+                    <th>số lượng mua</th>
+                    <th>Tổng tiền</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodythongketk" class="addListdatban">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagedatban">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End-Form dat ban-->
+     <!--Form hoa don phong-->
+    <div class="boxhoadonP row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header d-none">
+            <h3 class="card-title">Thông tin Hóa Đơn Phòng</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal d-none">
+            <div class="card-body ">
+              <div class="row ">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Mã HDP</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtmahoadonP" id="inputEmail3" placeholder="Mã KH">
+                  </div>
+                </div>              
+                
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">SL Phòng</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbslhoadonP">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Thời gian thuê</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbthoigian">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Mã KH</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbmakhhoadonP">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                </div>
+             
+              
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_hoadonP"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_hoadonP"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+              <button type="button" class="btn btn-info bg-gradient-danger sua_hoadonP"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger xoa_hoadonP"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger luu_hoadonP"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h3 class="card-title"><i class="fas fa-bar-chart" aria-hidden="true"></i>&nbsp;Thống kê sản phẩm</h3>
+              <button id="toggleButton" class="btn btn-success float-right">Hiển thị biểu đồ</button>
+            </div>
+            <!-- /.card-header -->
+          
+            <div class="card-body">
+              <table class="table table-bordered" id="productTable">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">ID</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Tên thể loại</th>
+                    <th>Ngày đặt</th>
+                    <th>số lượng mua</th>
+                    <th>Tổng tiền</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBodythongke" class="addListdatban">
+
+                </tbody>
+              </table>
+              <canvas id="myChart" class="d-none" width="1000" height="500"></canvas>
+            </div>
+            <!-- /.card-body -->
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                  const toggleButton = document.getElementById('toggleButton');
+                  const productTable = document.getElementById('productTable');
+                  const myChart = document.getElementById('myChart');
+              
+                  toggleButton.addEventListener('click', function() {
+                      if (myChart.classList.contains('d-none')) {
+                          myChart.classList.remove('d-none');
+                          productTable.classList.add('d-none');
+                          toggleButton.textContent = 'Hiển thị bảng';
+                      } else {
+                          myChart.classList.add('d-none');
+                          productTable.classList.remove('d-none');
+                          toggleButton.textContent = 'Hiển thị biểu đồ';
+                      }
+                  });
+              });
+              </script>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End-Form hoa don phong-->
+     <!--Form hoa don ban-->
+    <div class="boxhdban row is-hidden">
+      <div class="col-lg-12 d-none">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin Hóa Đơn Bàn</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
+            <div class="card-body ">
+              <div class="row ">
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Mã HDB</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control txtmahdban" id="inputEmail3" placeholder="Mã HDB">
+                  </div>
+                </div>              
+                
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">SL Bàn</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbslhdban">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputPassword3" class="col-sm-6 col-form-label">Mã KH</label>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+
+                      <select class="form-control cbmakhhdban">
+
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Ngày Thanh toán</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control txtngaythanhtoan" id="inputEmail3" placeholder="">
+                  </div>
+                </div>
+                
+                </div>
+             
+              
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_hdban"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_hdban"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+              <button type="button" class="btn btn-info bg-gradient-danger sua_hdban"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger xoa_hdban"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger luu_hdban"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách hóa đơn bàn</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-header">
+                <div class="input-group input-group-sm col-lg-4">
+                  <input type="text" class="form-control txttimhdban">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btntimhdban">Tìm</button>
+                  </span>
+                </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Mã HDB</th>
+            
+                    <th>Số lượng bàn</th>
+                    
+                    <th>Mã KH</th>
+                    <th>ngày thanh toán</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody class="addListhdban">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagehdban">
+
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!--End-Form hoa don ban-->
+     <!--Form Bo Phan-->
+     <div class="boxbophan row is-hidden">
+      <div class="col-lg-12">
+        <div class="card card-info">
+          <div class="card-header">
+            <h3 class="card-title">Thông tin các bo phan</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form class="form-horizontal">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Mã  bo phan</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control txtmabophan" id="inputEmail3" placeholder="Mã bộ phận">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Tên bộ phận</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control txttenbophan" id="inputPassword3" placeholder="Tên bộ phận">
+                </div>
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="button" class="btn btn-info bg-gradient-danger them_bophan"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Thêm</button>
+              <button type="button" class="btn btn-info bg-gradient-danger float-right lamlai_bophan"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Làm lại</button>
+              <button type="button" class="btn btn-info bg-gradient-danger sua_bophan"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Sửa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger xoa_bophan"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+              <button type="button" class="btn btn-info bg-gradient-danger luu_bophan"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Lưu</button>
+            </div>
+            <!-- /.card-footer -->
+          </form>
+          <div class="card">
+            <div class="card-header bg-success">
+              <h3 class="card-title"><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Danh sách các bộ phận</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-header">
+                <div class="input-group input-group-sm col-lg-4">
+                  <input type="text" class="form-control txttimbophan">
+                  <span class="input-group-append">
+                    <button type="button" class="btn btn-info btn-flat btntimbophan">Tìm</button>
+                  </span>
+                </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Mã bộ phận</th>
+                    <th>Tên bộ phận</th>
+                    <th>Thao tác</th>
+                  </tr>
+                </thead>
+                
+                <tbody class="addListbophan">
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer clearfix pagebophan">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      </div><!-- /.container-fluid -->
+      </section>
+    <!--</section>--><!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+   <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">QLDiem.vn</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+   </footer>
+   <aside class="control-sidebar control-sidebar-dark">
+   </aside>
+   </div>
+   <!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard.js"></script>
+
+
+<script src="js/bootbox/bootbox.min.js"></script>
+<script src="js/common_main.js"></script>
+<script src="js/color.js"></script>
+<script src="js/sanpham.js"></script>
+<script src="js/user.js"></script>
+<script src="js/theloai.js"></script>
+<script src="js/size.js"></script>
+<script src="js/order.js"></script>
+<script src="js/bstanh.js"></script>
+<script src="js/thuoctinh.js"></script>
+<script src="js/thongkesanpham.js"></script>
+<script src="js/thongketaikhoan.js"></script>
+<script src="js/menu-main.js"></script>
+
+
+
+</body>
+</html>
